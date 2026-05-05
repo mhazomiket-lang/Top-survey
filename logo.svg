@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 52" fill="none">
+  <!-- Star icon mark -->
+  <polygon points="22,6 25.5,16 36,16 27.5,22.5 30.5,33 22,27 13.5,33 16.5,22.5 8,16 18.5,16" fill="#E8363B"/>
+  <!-- Second smaller star -->
+  <polygon points="38,10 39.8,15.5 45.5,15.5 40.8,18.8 42.5,24.5 38,21.3 33.5,24.5 35.2,18.8 30.5,15.5 36.2,15.5" fill="#F5A623" opacity="0.85"/>
+
+  <!-- Wordmark -->
+  <text x="54" y="33" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="22" fill="#FFFFFF" letter-spacing="-0.5">National</text>
+  <text x="155" y="33" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="22" fill="rgba(255,255,255,0.65)" letter-spacing="-0.3">Panel</text>
+
+  <!-- Red underline accent -->
+  <rect x="54" y="38" width="62" height="2.5" rx="1.25" fill="#E8363B"/>
+  <rect x="120" y="38" width="3" height="2.5" rx="1.25" fill="#F5A623"/>
+</svg>

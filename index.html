@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Share your opinion in under 2 minutes. Open to all US residents. Anonymous & free.">
+<title>National Panel — American Opinion Survey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Favicon inline SVG via data URI -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='16,3 19,12 28,12 21,17.5 24,27 16,21.5 8,27 11,17.5 4,12 13,12' fill='%23E8363B'/%3E%3C/svg%3E">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:         #0A1628;
+  --accent:       #E8363B;
+  --accent-light: #FF5A5F;
+  --gold:         #F5A623;
+  --white:        #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── Stars ─── */
+.stars {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(1.5px 1.5px at 10% 15%, rgba(255,255,255,.55) 0%,transparent 100%),
+    radial-gradient(1px   1px   at 25%  8%, rgba(255,255,255,.35) 0%,transparent 100%),
+    radial-gradient(1px   1px   at 40% 22%, rgba(255,255,255,.45) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 55%  5%, rgba(255,255,255,.4)  0%,transparent 100%),
+    radial-gradient(1px   1px   at 70% 18%, rgba(255,255,255,.3)  0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 85% 10%, rgba(255,255,255,.5)  0%,transparent 100%),
+    radial-gradient(1px   1px   at 92% 25%, rgba(255,255,255,.35) 0%,transparent 100%),
+    radial-gradient(1px   1px   at  5% 40%, rgba(255,255,255,.25) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 18% 55%, rgba(255,255,255,.4)  0%,transparent 100%),
+    radial-gradient(1px   1px   at 30% 70%, rgba(255,255,255,.2)  0%,transparent 100%),
+    radial-gradient(1px   1px   at 48% 45%, rgba(255,255,255,.3)  0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 62% 60%, rgba(255,255,255,.4)  0%,transparent 100%),
+    radial-gradient(1px   1px   at 75% 75%, rgba(255,255,255,.25) 0%,transparent 100%),
+    radial-gradient(1px   1px   at 88% 50%, rgba(255,255,255,.3)  0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at  3% 80%, rgba(255,255,255,.35) 0%,transparent 100%),
+    radial-gradient(1px   1px   at 20% 90%, rgba(255,255,255,.2)  0%,transparent 100%),
+    radial-gradient(1px   1px   at 95% 85%, rgba(255,255,255,.3)  0%,transparent 100%);
+}
+
+/* ─── Flag stripe top ─── */
+.stripe-top {
+  height: 6px;
+  background: linear-gradient(90deg, #B22234 0%,#B22234 33%, #fff 33%,#fff 66%, #3C3B6E 66%,#3C3B6E 100%);
+  position: relative; z-index: 10;
+}
+
+/* ─── Nav ─── */
+nav {
+  position: relative; z-index: 10;
+  max-width: 860px; margin: 0 auto;
+  padding: 18px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-logo img { height: 40px; display: block; }
+
+.nav-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 100px;
+  padding: 7px 16px;
+  font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,.7);
+}
+
+.nav-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #4ade80;
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%,100% { opacity:1; }
+  50%      { opacity:.35; }
+}
+
+/* ─── Hero ─── */
+.hero {
+  position: relative; z-index: 5;
+  max-width: 780px; margin: 0 auto;
+  padding: 44px 24px 36px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(245,166,35,.15);
+  border: 1px solid rgba(245,166,35,.4);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 13px; font-weight: 600;
+  color: var(--gold);
+  letter-spacing: .05em; text-transform: uppercase;
+  margin-bottom: 26px;
+  animation: fadeDown .6s ease both;
+}
+
+.badge-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--gold);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:.45; transform:scale(.75); }
+}
+
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(34px, 7vw, 62px);
+  line-height: 1.06;
+  letter-spacing: -.025em;
+  margin-bottom: 20px;
+  animation: fadeDown .6s .1s ease both;
+}
+
+h1 em { font-style: normal; color: var(--accent-light); }
+
+.sub {
+  font-size: 18px; line-height: 1.65;
+  color: rgba(255,255,255,.7);
+  max-width: 540px; margin: 0 auto 36px;
+  animation: fadeDown .6s .2s ease both;
+}
+
+/* ─── CTA ─── */
+.cta-wrap { animation: fadeDown .6s .3s ease both; margin-bottom: 32px; }
+
+.cta-btn {
+  display: inline-block;
+  background: var(--accent); color: #fff;
+  text-decoration: none;
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px;
+  padding: 18px 54px;
+  border-radius: 8px;
+  box-shadow: 0 4px 28px rgba(232,54,59,.45);
+  transition: transform .15s, background .15s, box-shadow .15s;
+}
+
+.cta-btn:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 36px rgba(232,54,59,.55);
+}
+
+.cta-btn:active { transform: translateY(0) scale(.99); }
+
+.cta-note { margin-top: 11px; font-size: 13px; color: rgba(255,255,255,.38); }
+
+/* ─── Trust bar ─── */
+.trust-bar {
+  position: relative; z-index: 5;
+  display: flex; justify-content: center;
+  gap: 32px; flex-wrap: wrap;
+  padding: 0 24px 52px;
+  animation: fadeDown .6s .4s ease both;
+}
+
+.trust-item {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 14px; color: rgba(255,255,255,.5);
+}
+
+.t-icon {
+  width: 16px; height: 16px; flex-shrink: 0;
+  opacity: .65;
+}
+
+/* ─── Divider ─── */
+.divider {
+  position: relative; z-index: 5;
+  height: 1px; background: rgba(255,255,255,.08);
+  max-width: 700px; margin: 0 auto;
+}
+
+/* ─── Cards ─── */
+.cards-section {
+  position: relative; z-index: 5;
+  max-width: 800px; margin: 0 auto;
+  padding: 52px 24px 40px;
+}
+
+.section-label {
+  text-align: center;
+  font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(255,255,255,.3); font-weight: 600;
+  margin-bottom: 28px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px;
+  padding: 22px 18px;
+  transition: border-color .2s, background .2s;
+}
+
+.card:hover {
+  border-color: rgba(255,255,255,.22);
+  background: rgba(255,255,255,.08);
+}
+
+.card-icon { font-size: 26px; margin-bottom: 10px; display: block; }
+
+.card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px; font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.card p { font-size: 13.5px; color: rgba(255,255,255,.52); line-height: 1.55; }
+
+/* ─── Stats ─── */
+.stats-strip {
+  position: relative; z-index: 5;
+  background: rgba(255,255,255,.04);
+  border-top: 1px solid rgba(255,255,255,.07);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  padding: 32px 24px;
+}
+
+.stats-inner {
+  max-width: 700px; margin: 0 auto;
+  display: flex; justify-content: space-around;
+  gap: 20px; flex-wrap: wrap; text-align: center;
+}
+
+.stat-num {
+  display: block;
+  font-family: 'Syne', sans-serif;
+  font-size: 34px; font-weight: 800;
+  color: var(--white); line-height: 1;
+}
+
+.stat-label { font-size: 13px; color: rgba(255,255,255,.42); margin-top: 5px; }
+
+/* ─── Final CTA ─── */
+.final-cta {
+  position: relative; z-index: 5;
+  text-align: center;
+  padding: 60px 24px 50px;
+  max-width: 600px; margin: 0 auto;
+}
+
+.final-cta h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(24px, 5vw, 38px); font-weight: 800;
+  line-height: 1.1; margin-bottom: 14px;
+}
+
+.final-cta p {
+  font-size: 16px; color: rgba(255,255,255,.58);
+  margin-bottom: 32px; line-height: 1.65;
+}
+
+/* ─── Footer ─── */
+footer {
+  position: relative; z-index: 5;
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding: 20px 24px 28px;
+  text-align: center;
+}
+
+.footer-logo { margin-bottom: 10px; }
+.footer-logo img { height: 28px; opacity: .45; display: inline-block; }
+
+footer p {
+  font-size: 12px; color: rgba(255,255,255,.22); line-height: 1.7;
+}
+
+/* ─── Flag stripe bottom ─── */
+.stripe-bottom {
+  height: 5px;
+  background: linear-gradient(90deg,
+    #B22234 0%,#B22234 7.7%,
+    #fff    7.7%,#fff   15.4%,
+    #B22234 15.4%,#B22234 23.1%,
+    #fff    23.1%,#fff   30.8%,
+    #B22234 30.8%,#B22234 38.5%,
+    #fff    38.5%,#fff   46.2%,
+    #B22234 46.2%,#B22234 53.8%,
+    #fff    53.8%,#fff   61.5%,
+    #B22234 61.5%,#B22234 69.2%,
+    #fff    69.2%,#fff   76.9%,
+    #B22234 76.9%,#B22234 84.6%,
+    #fff    84.6%,#fff   92.3%,
+    #B22234 92.3%,#B22234 100%
+  );
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 20;
+}
+
+/* ─── Animation ─── */
+@keyframes fadeDown {
+  from { opacity:0; transform:translateY(-18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 520px) {
+  .nav-pill { display: none; }
+  .cta-btn  { font-size: 17px; padding: 15px 36px; }
+  .sub      { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+<div class="stripe-top"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="assets/logo.svg" alt="National Panel logo" width="180" height="40">
+  </div>
+  <div class="nav-pill">
+    <span class="nav-dot"></span>
+    Accepting responses
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">
+    <span class="badge-dot"></span>
+    Recruiting Now — Limited Spots
+  </div>
+
+  <h1>Your Voice Matters.<br><em>Get Paid to Prove It.</em></h1>
+
+  <p class="sub">
+    We're collecting opinions from Americans across every state.
+    Takes under 2 minutes — no sign-up, no spam, just your honest take.
+  </p>
+
+  <div class="cta-wrap">
+    <a class="cta-btn" href="https://www.wetcj.site/2C8F3S39/87W53SS/?sub1=DonRaz" target="_blank" rel="noopener">
+      Start My Survey →
+    </a>
+    <p class="cta-note">Free to participate &nbsp;·&nbsp; Under 2 minutes &nbsp;·&nbsp; Rewards available</p>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <span class="trust-item">
+    <svg class="t-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="8,1 9.8,6 15,6 10.9,9.1 12.5,14.5 8,11.5 3.5,14.5 5.1,9.1 1,6 6.2,6" fill="#F5A623"/>
+    </svg>
+    Trusted by 50,000+ Americans
+  </span>
+  <span class="trust-item">
+    <svg class="t-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="5" width="12" height="9" rx="1.5" stroke="rgba(255,255,255,.75)" stroke-width="1.3"/>
+      <path d="M5.5 5V3.5C5.5 2.4 6.4 1.5 7.5 1.5H8.5C9.6 1.5 10.5 2.4 10.5 3.5V5" stroke="rgba(255,255,255,.75)" stroke-width="1.3"/>
+      <circle cx="8" cy="9.5" r="1.3" fill="rgba(255,255,255,.75)"/>
+    </svg>
+    100% Anonymous
+  </span>
+  <span class="trust-item">
+    <svg class="t-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="8" cy="8" r="6.5" stroke="rgba(255,255,255,.75)" stroke-width="1.3"/>
+      <path d="M5.5 8L7 9.5L10.5 6" stroke="rgba(255,255,255,.75)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    No Personal Info Required
+  </span>
+  <span class="trust-item">
+    <svg class="t-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 1L8 15M1 8L15 8" stroke="rgba(255,255,255,.4)" stroke-width="1"/>
+      <ellipse cx="8" cy="8" rx="7" ry="4" stroke="rgba(255,255,255,.75)" stroke-width="1.3"/>
+      <circle cx="8" cy="8" r="6.5" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
+    </svg>
+    Open to All 50 States
+  </span>
+</div>
+
+<div class="divider"></div>
+
+<!-- CARDS -->
+<section class="cards-section">
+  <p class="section-label">Why Thousands Participate Every Day</p>
+  <div class="cards">
+    <div class="card">
+      <span class="card-icon">🗳️</span>
+      <h3>Shape Policy</h3>
+      <p>Real decisions are made with data like yours. Answers go directly to researchers and brands who act on them.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">⚡</span>
+      <h3>Super Fast</h3>
+      <p>Most participants finish in under 90 seconds. No accounts, no passwords, no friction.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎁</span>
+      <h3>Earn Rewards</h3>
+      <p>Eligible participants unlock gift cards, cash offers, and exclusive deals on completion.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">🔒</span>
+      <h3>Privacy First</h3>
+      <p>Your data is never collected or sold. Completely anonymous by design — always.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div>
+      <span class="stat-num">127K</span>
+      <div class="stat-label">Surveys this month</div>
+    </div>
+    <div>
+      <span class="stat-num">50</span>
+      <div class="stat-label">States represented</div>
+    </div>
+    <div>
+      <span class="stat-num">93%</span>
+      <div class="stat-label">Satisfaction rate</div>
+    </div>
+    <div>
+      <span class="stat-num">&lt;2 min</span>
+      <div class="stat-label">Average completion</div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Spots fill up fast.</h2>
+  <p>We only need a limited number of responses per region. If you're seeing this, your area still has open slots.</p>
+  <a class="cta-btn" href="https://www.wetcj.site/2C8F3S39/87W53SS/?sub1=DonRaz" target="_blank" rel="noopener">
+    Take the Survey Now →
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="assets/logo.svg" alt="National Panel" width="140" height="32">
+  </div>
+  <p>
+    &copy; 2025 National Opinion Panel &nbsp;·&nbsp; For US Residents Only<br>
+    This is a sponsored survey. Reward eligibility may vary by region. Participation is free.
+  </p>
+</footer>
+
+<div class="stripe-bottom"></div>
+
+</body>
+</html>
